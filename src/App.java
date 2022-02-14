@@ -12,7 +12,6 @@ public class App {
         for(byte charVal=0; charVal<sentence.length(); charVal++) {
             System.out.print((byte)sentence.charAt(charVal)+"/");
         }
-        System.out.print("hello");
     }
 
     static void decrypt(String sentence){
