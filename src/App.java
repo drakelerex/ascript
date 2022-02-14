@@ -1,7 +1,7 @@
 /*
     Realizado por Andrew Emerick
     12/2/22
-    Cambia frases a ASCII igual y vice versa
+    Cambiar frases a ASCII igual y vice versa
 */
 
 import java.util.Scanner;
