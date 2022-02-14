@@ -6,7 +6,7 @@
 
 import java.util.Scanner;
 
-public class App {
+public class ascript {
 
     static void encrypt(String sentence){
         for(byte charVal=0; charVal<sentence.length(); charVal++) {
