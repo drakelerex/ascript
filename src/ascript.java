@@ -30,11 +30,16 @@ public class ascript {
     }
       public static void main(String[] args) throws Exception {
         try (Scanner vampire = new Scanner(System.in)) {
-
             System.out.println("Enter a sentence: ");
             String sentence = vampire.nextLine();
 
-            decrypt(sentence);
+            System.out.println("Do you want to encrypt? If yes then enter true, if no then enter false. ");
+
+            if(vampire.nextBoolean()){
+                encrypt(sentence);
+            } else {
+                decrypt(sentence);
+            }
         }
     }
 }
