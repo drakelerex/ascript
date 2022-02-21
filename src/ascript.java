@@ -4,20 +4,29 @@
     Cambiar frases a ASCII igual y vice versa
 */
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ascript {
 
     static void encrypt(String sentence){
-        for(byte charVal=0; charVal<sentence.length(); charVal++) {
-            System.out.print((byte)sentence.charAt(charVal)+"/");
-        }
+        byte[] asciiByte=sentence.getBytes(StandardCharsets.UTF_8);
+        /*for(byte charVal=0; charVal<sentence.length(); charVal++)
+            System.out.print((byte)sentence.charAt(charVal)+"/");*/
+        for(byte i=0;i<asciiByte.length;i++)
+            System.out.print(asciiByte[i]+"/");
     }
 
     static void decrypt(String sentence){
-        /*String[] byteString = sentence.split("/");
-        byte[] ascii = new byte[];
-        System.out.print(ascii[1]);*/
+        String[] byteString = sentence.split("/");
+        int size = byteString.length;
+        byte[] asciiBytes = new byte[size];
+        for(int i=0;i<size;i++){
+            asciiBytes[i] = Byte.parseByte(byteString[i]);
+        }
+        for(byte i=0;i<asciiBytes.length;i++){
+            System.out.print((char)asciiBytes[i]);
+        }
     }
       public static void main(String[] args) throws Exception {
         try (Scanner vampire = new Scanner(System.in)) {
