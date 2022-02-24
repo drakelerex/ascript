@@ -23,7 +23,7 @@ public class ascript {
                 s += i+"/";
             System.out.println("File Written to output.txt");
             inFile.close();
-            FileOutputStream fileOut = new FileOutputStream("output.txt");
+            FileOutputStream fileOut = new FileOutputStream(fileName);
             byte[] sArray = s.getBytes(StandardCharsets.UTF_8);
             fileOut.write(sArray);
             fileOut.close();
@@ -46,7 +46,7 @@ public class ascript {
             byte[] asciiBytes = new byte[size];
             for(i=0;i<size;i++)
                 asciiBytes[i] = Byte.parseByte(byteString[i]);
-            FileOutputStream fileOut = new FileOutputStream("output.txt");
+            FileOutputStream fileOut = new FileOutputStream(fileName);
             fileOut.write(asciiBytes);
             fileOut.close();
         } catch(IOException e){
