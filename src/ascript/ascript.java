@@ -1,14 +1,13 @@
 /*
     Realizado por Andrew Emerick
     24/2/22
-    Cambia frases a UTF-8 y vice versa
+    Cambia cosos a UTF-8 y vice versa
 */
 
 package ascript;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,6 +60,7 @@ public class ascript {
             while((ix=inFile.read())!=-1){
                 s += (char)ix;
             }
+            inFile.close();
             String[] byteString = s.split("/");
             int size = byteString.length;
             byte[] asciiBytes = new byte[size];
@@ -84,7 +84,14 @@ public class ascript {
         Scanner vampire = new Scanner(System.in);
         System.out.println("Enter a file name: ");
         String fileName = vampire.nextLine();
-        dFile(fileName);
+        System.out.print("Do you want to encrypt or decrypt this file? ");
+        boolean answer = vampire.nextLine().toLowerCase().startsWith("d");
+
+        if(answer)
+            dFile(fileName);
+        else
+            eFile(fileName);
+
         vampire.close();
     }
 }
