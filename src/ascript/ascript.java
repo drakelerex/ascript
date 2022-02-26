@@ -1,60 +1,16 @@
 /*
     Realizado por Andrew Emerick
-    24/2/22
-    Cambia cosos a UTF-8 y vice versa
+    25/2/22
+    Cambia cosos a UTF-8 y viceversa
 */
 
 package ascript;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class ascript {
-
-    static void eFile(String fileName){
-        try{
-            FileInputStream inFile = new FileInputStream(fileName);
-            long i=0;
-            String s="";
-            while((i=inFile.read())!=-1)   
-                s += i+"/";
-            System.out.println("File Written to output.txt");
-            inFile.close();
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            byte[] sArray = s.getBytes(StandardCharsets.UTF_8);
-            fileOut.write(sArray);
-            fileOut.close();
-        } catch(IOException e){
-            System.out.println("An error occured");
-            e.printStackTrace();
-        }
-    }
-
-    static void dFile(String fileName){
-        try{
-            FileInputStream inFile = new FileInputStream(fileName);
-            int i=0;
-            String s="";
-            while((i=inFile.read())!=-1)
-                s += (char)i;
-            inFile.close();
-            String[] byteString = s.split("/");
-            int size = byteString.length;
-            byte[] asciiBytes = new byte[size];
-            for(i=0;i<size;i++)
-                asciiBytes[i] = Byte.parseByte(byteString[i]);
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            fileOut.write(asciiBytes);
-            fileOut.close();
-        } catch(IOException e){
-            System.out.println("An error occured");
-            e.printStackTrace();
-        }
-    }
-      public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
+        //fileWriter fileIO = new fileWriter(); not needed, since static methods don't need an object declaration
         Scanner vampire = new Scanner(System.in);
         System.out.println("Enter a file name: ");
         String fileName = vampire.nextLine();
@@ -62,9 +18,9 @@ public class ascript {
         boolean answer = vampire.nextLine().toLowerCase().startsWith("d");
 
         if(answer)
-            dFile(fileName);
+            fileWriter.dFile(fileName);
         else
-            eFile(fileName);
+            fileWriter.eFile(fileName);
 
         vampire.close();
     }
